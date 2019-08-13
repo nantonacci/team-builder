@@ -7,9 +7,18 @@ function App() {
 
   const [team, setTeam] = useState([]);
 
+ function handleTeam(event){
+    event.preventDefault();
+    const updatedTeam = { ...team};
+    setTeam(updatedTeam);
+    console.log(team);
+  }
+  
+ 
   return (
     <div className="App">
-      <Form/>
+      <Form onSubmit={handleTeam}/>
+      <div>Team members: {team}</div>
     </div>
   );
 }

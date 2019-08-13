@@ -2,7 +2,8 @@ import React, {useState} from 'react';
 
 function Form(){
 
-    const [user, setUser] = useState({name: "", email: "", role: ""});
+    const [user, setUser] = useState({member: "", email: "", role: ""});
+
 
     function handleChange(event){
         const updatedUser = { ...user, [event.target.name]: event.target.value };
@@ -15,37 +16,40 @@ function Form(){
         setUser(updatedUser);
     }
 
-    function handleSubmit(event){
-        event.preventDefault();
-        console.log("user state", user);
-    }
+
+    // function handleSubmit(event){
+    //     event.preventDefault();
+    //     console.log("user state", user);
+    // }
 
     return(
-        <form onSubmit={handleSubmit}>
+        <form>
             <fieldset>
-                <legend>Team Member Details</legend>
-                <label for="name"> Name:
+                <legend>Add a team member</legend>
+                <label> Name:
                     <input
                     type="text"
-                    name="name"
+                    name="member"
                     placeholder="your name"
-                    value={user.username}
+                    value={user.member}
                     onChange={handleChange}
                     />
                     
                 </label>
-                <label for="email"> Email:
+                <label> Email:
                     <input
                     type="email"
+                    name="email"
                     placeholder="your@email.here"
                     value={user.email}
                     onChange={handleChange}
                     />
                     
                 </label>
-                <label for="role"> Role:
+                <label> Role:
                     <input
                     type="text"
+                    name="role"
                     placeholder="your role"
                     value={user.role}
                     onChange={handleChange}
