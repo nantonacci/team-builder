@@ -19,7 +19,11 @@ const Form = props => {
             ...user,
             id: Date.now()
         }
+        setUser({
+            member: "", email: "", role: ""
+        })
         props.addTeam(newUser);
+        
     };
 
     return(
@@ -33,6 +37,7 @@ const Form = props => {
                     placeholder="your name"
                     value={user.member}
                     onChange={handleChange}
+                    required
                     />
                     
                 </label>
@@ -43,6 +48,7 @@ const Form = props => {
                     placeholder="your@email.here"
                     value={user.email}
                     onChange={handleChange}
+                    required
                     />
                     
                 </label>
@@ -53,6 +59,7 @@ const Form = props => {
                     placeholder="your role"
                     value={user.role}
                     onChange={handleChange}
+                    required
                     />
                     
                 </label>
