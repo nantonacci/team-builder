@@ -1,24 +1,26 @@
 import React, {useState} from 'react';
+import ReactDOM from "react-dom";
+
 import Form from './components/Form.js';
+import TeamCard from './components/TeamCard.js';
+import data from './data.js';
 
 import './App.css';
 
 function App() {
+  const [team, setTeam] = useState(data);
 
-  const [team, setTeam] = useState([]);
-
- function handleTeam(event){
-    event.preventDefault();
-    const updatedTeam = { ...team};
-    setTeam(updatedTeam);
-    console.log(team);
-  }
+  const addTeam = tea => {
+    setTeam([...team, tea])
+  };
   
  
   return (
     <div className="App">
-      <Form onSubmit={handleTeam}/>
-      <div>Team members: {team}</div>
+      <div className="container">
+        <Form addTeam={addTeam}/>
+      
+      <TeamCard teamList={team} /></div>
     </div>
   );
 }

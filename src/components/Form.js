@@ -1,29 +1,29 @@
 import React, {useState} from 'react';
+import teamData from '../data.js';
 
-function Form(){
+const Form = props => {
+    console.log(props);
 
     const [user, setUser] = useState({member: "", email: "", role: ""});
 
 
-    function handleChange(event){
-        const updatedUser = { ...user, [event.target.name]: event.target.value };
-        console.log(
-            "handleChange",
-            event.target.name,
-            event.target.value,
-            updatedUser
-        );
-        setUser(updatedUser);
-    }
+    const handleChange = event => {
+        setUser({ ...user, [event.target.name]: event.target.value });
+       
+    };
 
 
-    // function handleSubmit(event){
-    //     event.preventDefault();
-    //     console.log("user state", user);
-    // }
+    const handleSubmit = event => {
+        event.preventDefault();
+        const newUser = {
+            ...user,
+            id: Date.now()
+        }
+        props.addTeam(newUser);
+    };
 
     return(
-        <form>
+        <form onSubmit={handleSubmit}>
             <fieldset>
                 <legend>Add a team member</legend>
                 <label> Name:
